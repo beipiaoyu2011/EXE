@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>22</title>
+
+</head>
+<body>
+<!--
+<p id="pp">11</p>
+
+<P>22</P>
+
+<p>33</p>
+<script>
+var x=document.getElementById('pp');
+document.write(x.firstChild.nodeValue);
+
+</script>
+-->
+<div id="d1">
+    <p id="p1">11</p>
+
+    <p id="p2">3</p>
+</div>
+
+<script>
+    var newElement=document.createElement('p');
+    var newTxtNode=document.createTextNode('This is new');
+    newElement.appendChild(newTxtNode);
+
+    var element=document.getElementById('d1');
+    var child=document.getElementById('p1');
+//    element.appendChild(newElement)
+    element.insertBefore(newElement,child)
+//    element.removeChild(child)
+//    element.replaceChild(newElement,child)
+</script>
+
+<input type="button" value="改变背景色" onclick="document.body.style.background='red'" onmouseout="document.body.style.background='blue'"/>
+
+
+
+
+</body>
+</html>

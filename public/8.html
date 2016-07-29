@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>8</title>
+<script src="js/jquery-1.11.1.js"></script>
+<script>
+  $(function(){
+      setTimeout("$('p').hide('slow')",3000);
+      $('a').click(function (event) {
+          event.preventDefault();
+          $(this).hide('slow',function(){
+              alert('11');
+          })
+      })
+      clearTimeout()
+  })
+</script>
+</head>
+<body>
+<p>11</p>
+<a href="http://www.baidu.com">44</a>
+</body>
+</html>

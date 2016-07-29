@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>自适应bar</title>
+	<script src="js/jquery-1.11.1.js"></script>
+	<style>
+		 *{
+		 	 margin: 0;
+		 	 padding: 0;
+		 }
+         body{
+             background: #303c4c;
+         }
+		 .flowTree{
+		 	 height:800px;
+             margin-top: 40px;
+             position: relative;
+		 }
+         .flowTree li{
+             width: 2px;
+             height: 12.5%;
+             background: #434e63;
+             margin-left: 25px;
+             list-style: none;
+		 }
+         .stepIco{
+             width: 26px;
+             height: 26px;
+             border: 2px solid #434e63;
+             border-radius: 26px;
+             position: absolute;
+             background: #242f40;
+             text-align: center;
+             line-height: 26px;
+             vertical-align: middle;
+             cursor: pointer;
+         }
+         .stepIco1{
+             left: 13px;
+             top: 0;
+         }
+         .stepIco2{
+             left: 13px;
+             top: 12.5%;
+         }
+         .stepIco3{
+             left: 13px;
+             top: 25%;
+         }
+         .stepIco4{
+             left: 13px;
+             top: 37.5%;
+         }
+         .stepIco5{
+             left: 13px;
+             top: 50%;
+         }
+         .stepIco6{
+             left: 13px;
+             top: 62.5%;
+         }
+         .stepIco7{
+             left: 13px;
+             top: 75%;
+         }
+         .stepIco8{
+             left: 13px;
+             top: 87.5%;
+         }
+         .stepCircleNo{
+             width: 12px;
+             height: 12px;
+             border-radius: 12px;
+             background: #434e63;
+             display: inline-block;
+         }
+         .stepCircleYes{
+             width: 12px;
+             height: 12px;
+             border-radius: 12px;
+             background: #15A4FA;
+             display: inline-block;
+         }
+         .stepText{
+             width: 120px;
+             position: absolute;
+             color: #f8f8f8;
+             cursor: pointer;
+         }
+         .stepText1{
+             left: 45px;
+             top: 5px;
+         }
+         .stepText2{
+             left: 45px;
+             top: 13%;
+         }
+         .stepText3{
+             left: 45px;
+             top: 25.5%;
+         }
+         .stepText4{
+             left: 45px;
+             top: 38%;
+         }
+         .stepText5{
+             left: 45px;
+             top: 50.5%;
+         }
+         .stepText6{
+             left: 45px;
+             top: 63%;
+         }
+         .stepText7{
+             left: 45px;
+             top: 75.5%;
+         }
+         .stepText8{
+             left: 45px;
+             top: 88%;
+         }
+         .stepTextYes{
+             color: #999;
+         }
+
+    </style>
+    <script>
+        $(function(){
+            $('.flowTree li').height($('.flowTree').height()/8);
+            //左侧流程图切换 只能按顺序点击切换
+            $(document).on('click', '.flowTree .stepIco', function () {
+                var index = $(this).attr('data-type');
+                if ($(this).prev('.stepIco').find('.stepCircle').hasClass('stepCircleNo') || $(this).hasClass('stepFirst')) {
+                    $('.flowTree').find('.stepCircle').removeClass('stepCircleYes');
+                    $(this).find('.stepCircle').addClass('stepCircleYes').addClass('stepCircleNo');
+                    $('.flowTree').find('.stepText').eq(index).addClass('stepTextYes');//点击过的文字变灰色
+                    $('.pt-item').eq(index).show().siblings().hide();
+                    showFunc(stockCode, stockName);
+                }
+            });
+            //点击文字切换
+            $(document).on('click', '.stepText', function () {
+                var step = $(this).attr('data-step');
+                var $step = $('.flowTree').find('.stepIco');
+                var index = $(this).attr('data-type');
+                $.each($step, function () {
+                    if ($(this).hasClass(step)) {
+                        if ($(this).prev('.stepIco').find('.stepCircle').hasClass('stepCircleNo') || $(this).hasClass('stepFirst')) {
+                            $step.find('.stepCircle').removeClass('stepCircleYes');
+                            $(this).find('.stepCircle').addClass('stepCircleYes').addClass('stepCircleNo');
+                            $('.flowTree').find('.stepText').eq(index).addClass('stepTextYes');//点击过的文字变灰色
+                            $('.pt-item').eq(index).show().siblings().hide();
+                            showFunc(stockCode, stockName);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="flowTree">
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+    <div class="stepIco stepIco1 stepFirst" data-type="0">
+        <div class="stepCircle stepCircleNo stepCircleYes"></div>
+    </div>
+    <div class="stepIco stepIco2" data-type="1">
+        <div class="stepCircle"></div>
+    </div>
+    <div class="stepIco stepIco3" data-type="2">
+        <div class="stepCircle"></div>
+    </div>
+    <div class="stepIco stepIco4" data-type="3">
+        <div class="stepCircle"></div>
+    </div>
+    <div class="stepIco stepIco5" data-type="4">
+        <div class="stepCircle"></div>
+    </div>
+    <div class="stepIco stepIco6" data-type="5">
+        <div class="stepCircle"></div>
+    </div>
+    <div class="stepIco stepIco7" data-type="6">
+        <div class="stepCircle"></div>
+    </div>
+    <div class="stepIco stepIco8" data-type="7">
+        <div class="stepCircle"></div>
+    </div>
+    <div class="stepText stepText1 stepTextYes" data-step="stepIco1" data-type="0">第一步<br/>11</div>
+    <div class="stepText stepText2" data-step="stepIco2" data-type="1">第二步<br/>22</div>
+    <div class="stepText stepText3" data-step="stepIco3" data-type="2">第三步<br/>33</div>
+    <div class="stepText stepText4" data-step="stepIco4" data-type="3">第四步<br/>44</div>
+    <div class="stepText stepText5" data-step="stepIco5" data-type="4">第五步<br/>55</div>
+    <div class="stepText stepText6" data-step="stepIco6" data-type="5">第六步<br/>66</div>
+    <div class="stepText stepText7" data-step="stepIco7" data-type="6">第七步<br/>77</div>
+    <div class="stepText stepText8" data-step="stepIco8" data-type="7">第八步<br/>88</div>
+
+</div>
+</body>
+</html>

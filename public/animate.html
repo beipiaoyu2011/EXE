@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>animate动画</title>
+<script src="js/jquery-1.11.1.js"></script>
+<style>
+    div{
+        position: absolute;
+        top: 20px;
+        left: 0;
+        background: red;
+    }
+</style>
+<script>
+    $(function(){
+        $('#run').click(function(){
+            $('div:not(:animated)').animate({left: '+=200'},100);
+        })
+    })
+</script>
+</head>
+<body>
+<button id="run">run</button><div>11</div>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>正则表达式</title>
+	<script>
+//		var pattern=/,/ig;
+//		var str='This is a box,that is a Box!';
+//		alert(pattern.test(str))
+//		alert(RegExp.rightContext);
+//		alert(str.split(pattern).length);
+		
+		
+//		var pattern=/go?le/ig;//匹配0或1
+//		var str='gole';
+//		alert(pattern.test(str)); //true
+	
+//		var pattern=/go+le/ig;//至少一个o
+//		var str='goooole';
+//		alert(pattern.test(str));
+//	
+//		var pattern=/go*le/ig;//0,1,或者多个
+//		var str='gle';
+//		alert(pattern.test(str));
+//		
+//		
+//		var pattern=/go{2,4}le/;//o{2,4}表示匹配2个o-4个o
+//		var str='goole';
+//		alert(pattern.test(str));//true
+		
+//		var pattern=/go{2}le/;//o{2}表示只能匹配2个
+//		var str='gooole';
+//		alert(pattern.test(str));//true
+		
+//		var pattern=/go{2,}le/;//o{2}表示匹配2个以及以上
+//		var str='goooooole';
+//		alert(pattern.test(str));//true
+		
+//		var pattern=/[a-z]oole/i;//[a,z]表示26个小写字母，任意一个都可以匹配(或者多个范围内)
+//		var str='Doole';
+//		alert(pattern.test(str));//true
+		
+//		var pattern=/[a-zA-Z0-9]oole/i;//[a,z]表示可以匹配大小写a-zA-Z0-9
+////		var str='D999oole';
+////		var str='Da99oole';
+//		var str='eeeeea99oole';
+//		alert(pattern.test(str));//以上都是true
+		
+//		var pattern=/g.*le/i;//.*匹配中间一个或者多个
+//		var str='goooooole';
+//		alert(pattern.test(str));//以上都是true
+			
+//		var pattern=/[^0-9]oole/i;//非0-9
+//		var str='5oole';
+//		alert(pattern.test(str));//以上都是true
+//		
+		
+//		var pattern=/^[a-z]oole/;//匹配句首
+//		var str='gggoole';
+//		alert(pattern.test(str))//flase
+		
+				
+//		var pattern=/^[a-z]+oole/;//匹配句首 +表示匹配多个【a-z】
+//		var str='gggoole';
+//		alert(pattern.test(str))//true
+		
+//		var pattern=/^[a-z0-9_]+oole/;//匹配字母数字以及下划线
+//		var str='_gggoole';
+//		alert(pattern.test(str))//true
+		
+//		var pattern=/^\w+oole/;//匹配字母数字以及下划线 \w==[a-z0-9_] \W==[^a-z0-9] 非 大写
+//		var str='_gggoole';
+//		alert(pattern.test(str))//flase
+		
+//		var pattern=/\Doole/;//匹配字母数字 \d==[0-9] \D==[^0-9] 非 大写
+//		var str='_gggoole';
+//		alert(pattern.test(str))//flase
+		
+//		var pattern=/^goole+$/;//^强制首匹配 $强制尾匹配
+//		var str='gooleeeee';
+//		alert(pattern.test(str))//true
+			
+//		var pattern=/goo\s+le/;//\s表示空格匹配
+//		var str='goo  le';
+//		alert(pattern.test(str))//true
+		
+//		var pattern=/goole\b/;//\b表示匹配是否处在边缘
+//		var str='goole';
+//		alert(pattern.test(str))//true
+		
+//		var pattern=/8(.*)8/;//()表示匹配分组
+//		var str='8goole8';
+//		pattern.test(str);
+//		alert(RegExp.$1)//RegExp.$1表示获取模式中的第一个分组中对应的匹配字符串
+//		
+		
+//		var pattern=/8(.*)8/;
+//		var str='This is 8gddoole8';
+//		document.write(str.replace(pattern,'<strong>$1</strong>'));
+//		//$1表示分组获取字符串匹配到的内容
+//		
+//		var pattern=/(.*)\s(.*)/;
+//		var str='goole baidu';
+//		alert(str.replace(pattern,'$2 $1'))//位置替换
+//		
+//		var pattern=/[a-z]+/; //这里使用了贪婪模式
+//		var str='adsdfd';
+//		alert(str.replace(pattern,'1'));//1 整体被替换
+		
+//		var pattern=/[a-z]+?/; //这里使用了惰性模式
+//		var str='adsdfd';
+//		alert(str.replace(pattern,'1'));//1dsdfd 第一个被替换
+		
+//		var pattern=/[a-z]+?/g; //这里使用了惰性模式 开启了全局
+//		var str='adsdfd';
+//		alert(str.replace(pattern,'1'));//111111 每一个字母被替换
+		
+//		var pattern=/8(.*)8/;   //开启了贪婪模式
+//		var str='8goole8 8goole8 8goole8';// 匹配到的分组内容为goole8 8goole8 8goole
+//		alert(str.replace(pattern,"$1"));
+//		//结果为goole8 8goole8 8goole
+		
+//		var pattern=/8(.*?)8/;   //开启了惰性模式
+//		var str='8goole8 8goole8 8goole8';// 匹配到的分组内容为goole 8goole8 8goole8
+//		alert(str.replace(pattern,"$1"));
+//		//结果为goole 8goole8 8goole8
+		
+//		var pattern=/8(.*?)8/g;   //开启了惰性模式  并开启了全局
+//		var str='8goole8 8goole8 8goole8';// 匹配到的分组内容为goole goole goole
+//		alert(str.replace(pattern,"$1"));
+//		//结果为goole goole goole
+		
+//		var pattern=/8([^8]*)8/g;   //屏蔽8 另外一种惰性模式
+//		var str='8goole8 8goole8 8goole8';// 匹配到的分组内容为goole goole goole
+//		alert(str.replace(pattern,"$1"));
+//		//结果为goole goole goole
+		
+//		var pattern=/^[a-z]+\s[0-9]{4}$/; 
+//		var str='goole 2012';
+//		alert(pattern.exec(str));//goole 2012
+		
+//		var pattern=/^([a-z]+)\s([0-9]{4})$/; //使用exec返回分组
+//		var str='goole 2012';
+//		var a=pattern.exec(str);
+//		alert(a[0])//返回匹配的所有字符串 goole 2012
+//		alert(a[1])//返回匹配的第一个分组字符串 goole
+//		alert(a[2])//返回匹配的第二个分组字符串 2012
+		
+//		var pattern=/(\d+)([a-z]+)/; //捕获性分组
+//		var str='123abc';
+//		alert(pattern.exec(str))//123abc,123,abc
+//		var a=pattern.exec(str);
+//		alert(a[0]) //123abc
+//		alert(a[1])//123
+//		alert(a[2])//abc
+		
+//		var pattern=/(\d+)(?:[a-z])/; //非捕获性分组  在不需要捕获的分组前加?:
+//		var str='123abc';
+////		alert(pattern.exec(str))//123abc,123
+//		var a=pattern.exec(str);
+//		alert(a[0]) //123abc
+//		alert(a[1])//123
+//		
+//		var pattern=/(?:\d+)(?:[a-z])/; //非捕获性分组  在不需要捕获的分组前加?:
+//		var str='123abc';
+//		alert(pattern.exec(str))//123abc
+//		var a=pattern.exec(str);
+//		alert(a[0]) //123abc
+//		
+		
+//		var pattern=/(a?(b?(c?)))/;//嵌套分组 从外到内获取
+//		var str='abc';
+//		alert(pattern.exec(str))//abc,abc,bc,c
+//		var a=pattern.exec(str);
+//		alert(a[0])//获取整个字符串 abc
+//		alert(a[1])//获取最外面分组字符串 abc
+//		alert(a[2])//获取里面一个分组字符串 bc
+//		alert(a[3])//获取最里面分组字符串 c
+//		
+////		
+//		var pattern=/goo(?=gle)/;//goo后面必须是gle才能返回goo 注意返回的是goo不是google
+//		var str='google44';
+//		alert(pattern.exec(str))//goo
+//		
+//		var pattern=/\[/;// 特殊字符必须通过\来转义才能匹配
+//		var str='[';
+//		alert(pattern.exec(str))
+	
+		var pattern=/^\d+/gm; //匹配的内容有换行的时候要开启多行匹配模式m
+		var str='1 baidu\n2 google\n3 taobao';
+		alert(str.replace(pattern,'#'))
+		
+		
+
+
+
+		
+	</script>
+</head>
+<body>
+113333
+ 
+         
+</body>
+</html>

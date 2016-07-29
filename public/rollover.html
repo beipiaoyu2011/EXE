@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>a simple rollover</title>
+</head>
+<style>
+img{
+    border: none;
+}
+
+</style>
+<script>
+window.onload=rollover;
+function rollover(){
+    for(var i=0;i<document.images.length;i++){
+        if(document.images[i].parentNode.tagName=='A'){
+                setRollover(document.images[i]);
+        }
+    }
+}
+
+function setRollover(thisImage){
+    thisImage.outImage=new Image();
+    thisImage.outImage.src=thisImage.src;
+    thisImage.onmouseout=function(){
+        this.src=this.outImage.src;
+    }
+    thisImage.overImage=new Image();
+    thisImage.overImage.src='images/'+thisImage.id+'_on.gif';
+    thisImage.onmouseover= function () {
+        this.src=this.overImage.src;
+    }
+    thisImage.clickImage=new Image();
+    thisImage.clickImage.src='images/'+thisImage.id+'_click.gif';
+    thisImage.onclick=function(){
+        this.src=this.clickImage.src;
+    }
+}
+
+
+
+</script>
+<body>
+<!--
+<a href="3.html" onmouseover="document.images['arrow'].src='images/arrow_on.gif'" onmouseout="document.images['arrow'].src='images/arrow_off.gif'"><img id="arrow" src="images/arrow_off.gif"></a>
+-->
+<a href="#"><img src="images/arrow_off.gif" alt="arrow" id="arrow"/></a>
+<a href="#"><img src="images/arrow1_off.gif" alt="arrow1" id="arrow1"/></a>
+
+
+
+
+</body>
+</html>

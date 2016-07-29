@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>radio</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;;
+        }
+        div{
+            text-align: center;
+            margin-top: 50px;
+        }
+        .pay_list_c1 {
+            width: 24px;
+            height: 18px;
+            /*float: left;*/
+            padding-top: 3px;
+            cursor: pointer;
+            text-align: center;
+            margin-right: 10px;
+            background: url("images/inputradio.gif") no-repeat -24px 0;
+        }
+        .radioClass {
+            opacity: 0;
+            cursor: pointer;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+            filter: alpha(opacity=0);
+        }
+        .on {
+            background-position: 0 0;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <label>
+        <span class="pay_list_c1 on">
+            <input type="radio" class="radioClass"/>
+        </span>
+        <span>111</span>
+    </label>
+</div>
+</body>
+</html>

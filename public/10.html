@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>10</title>
+    <script src="js/jquery-1.11.1.js"></script>
+    <script>
+        $(function(){
+            // for(var i=0;i<5;i++){}
+            //     $('<div>').appendTo(document.body);
+            $('select option').hover(function(){
+                $(this).css('background','red');
+            })
+        })
+    </script>
+    <style>
+        div{
+            width: 20px;
+            height: 20px;
+        }
+        option:hover{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<select>
+       <option value="11" class="ss">11</option>
+       <option value="11" class="ss">22</option>
+       <option value="11" class="ss">33</option>
+       <option value="11" class="ss">44</option>
+    option
+</select>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>手风琴下拉菜单效果</title>
+<script src="js/jquery-1.11.1.js"></script>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	ul{
+		list-style: none;
+	}
+	.nav ul{
+		display: none;
+	}
+	.nav ul li{
+		width: 100px;
+		text-align: center;
+		cursor: pointer;
+	}
+	.nav div{
+		background: #4ecc70;
+		width: 100px;
+		border-radius: 10px;
+		line-height: 34px;
+		text-align: center;
+		color: white;
+		cursor: pointer;
+	}
+	.demo{
+/*		display: none;*/
+	}
+	.red{
+		background:red;
+		border-radius: 10px;
+	}
+	
+</style>
+<script>
+$(function(){
+	//case 1
+//		$('.nav div').on('click',function(){
+//			if(false==$(this).next().is(':visible')){
+//				$('.nav ul').slideUp(300);
+//			}
+//			$(this).next().slideToggle(300);
+//		})
+	//case 2
+	var changeType=$('.nav').find('div');
+	$.each(changeType,function(){
+		$(this).on('click',function(){
+			if(false==$(this).next().is(':visible')){
+				$('.nav ul').slideUp(300);
+			}
+			$(this).next().slideToggle(300);
+			})
+			$('.nav ul:eq(0)').show();
+		
+	})
+	var hoverType=$('.nav .u').find('li')
+	$.each(hoverType,function(){
+		$(this).hover(function(){
+			$(this).addClass('red').siblings().removeClass('red');
+		})
+	})
+	
+})
+</script>
+</head>
+<body>
+<ul class="nav">
+    <li>
+    	<div>水果</div>
+    	<ul class="u">
+    		<li>香蕉</li>
+    		<li>橘子</li>
+    		<li>梨子</li>
+    		<li>西瓜</li>
+    	</ul>
+    </li>
+    <li>
+    	<div>蔬菜</div>
+    	<ul class="u">
+    		<li>芹菜</li>
+    		<li>黄瓜</li>
+    		<li>洋葱</li>
+    		<li>西瓜</li>
+    	</ul>
+    </li>
+    <li>
+    	<div>肉类</div>
+    	<ul class="u">
+    		<li>鸡肉</li>
+    		<li>兔肉</li>
+    		<li>鸭肉</li>
+    		<li>龙肉</li>
+    	</ul>
+    </li>
+  
+</ul>
+</body>
+</html>

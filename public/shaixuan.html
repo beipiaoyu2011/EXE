@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="js/jquery-1.11.1.js"></script>
+<title>筛选</title>
+<script>
+$(function(){
+//    $('p').eq(-1).css('background','red')
+    $('p').click(function(){
+        if($('p').hasClass('mm')){
+                $(this).css('background','red');
+            })
+
+    })
+})
+
+
+</script>
+</head>
+<body>
+<P class="mm">111</P>
+
+<P>112</P>
+
+<P>113</P>
+
+<P>114</P>
+</body>
+</html>

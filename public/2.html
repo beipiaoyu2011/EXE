@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>22</title>
+<script src="js/jquery-1.11.1.js"></script>
+<script>
+    $(function(){
+        $('li').click(function(){
+            var $li=$(this),
+                isWithTwo=$li.is(function(){
+                    return $('strong',this).length==2;
+                })
+            if(isWithTwo){
+                $li.css('background','blue')
+            }else{
+                $li.css('background','red')
+            }
+        })
+    })
+</script>
+</head>
+<body>
+<ul>
+    <li>I <strong>want</strong> to go home</li>
+    <li>I <strong>want</strong> to go <strong>home</strong></li>
+    <li>I want to go home</li>
+    <li>I want to go home</li>
+</ul>
+</body>
+</html>

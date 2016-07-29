@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Jquery中position()和offset()的区别</title>
+<script src="js/jquery-1.11.1.js"></script>
+<script>
+$(function(){
+//    var vPosition=$('.outer').position();
+//    alert(vPosition.left) //100
+//    alert(vPosition.top)  //200
+
+//    var vPosition=$('.inner').position();
+//    alert(vPosition.left) //50
+//    alert(vPosition.top)  //100
+
+//    var vPosition=$('.inner').offset();
+//    alert(vPosition.left) //150
+//    alert(vPosition.top)  //300
+    //回到顶部
+//    var goDiv=function(){
+//        var str='<div class="goDiv"></div>'
+//        $('body').append(str);
+//        $(window).scroll(function(){
+//            var $this=$(this);
+//            if($this.scrollTop()>=$this.height()/2){
+//                $('.goDiv').fadeIn();
+//            }else if($this.scrollTop()<$this.height()/2){
+//                $('.goDiv').fadeOut();
+//            }
+//        })
+//        $('.goDiv').click(function () {
+//            $('html,body').animate({scrollTop:$('.inner').offset().top},800)
+//        })
+//    }
+//    goDiv()
+
+    //回到底部
+    var goFooter=function(){
+        var str='<div class="goFooter"></div>'
+        $('body').append(str);
+        $(window).scroll(function(){
+            var $this=$(this);
+            if($this.scrollTop()<$this.height()/2){
+                $('.goFooter').fadeIn();
+            }else if($this.scrollTop()>=$this.height()/2){
+                $('.goFooter').fadeOut();
+            }
+        })
+        $('.goFooter').click(function () {
+            $('html,body').animate({scrollTop:$('.footer').offset().top},800)
+        })
+    }
+    goFooter()
+
+
+})
+</script>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+}
+.outer{
+    width: 200px;
+    height: 200px;
+    position: relative;
+    left: 100px;
+    top: 200px;
+    border: 1px solid mediumvioletred;
+}
+.inner{
+    position: absolute;
+    left: 50px;
+    top: 100px;
+    border: 1px solid grey;
+}
+.goDiv{
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background: rosybrown;
+    display: none;
+}
+.goFooter{
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    background: rosybrown;
+    display: none;
+}
+.footer{
+    width: 100%;
+    height: 50px;
+    background: grey;
+}
+</style>
+</head>
+<body>
+<div class="outer">
+    <div class="inner">11</div>
+</div>
+<div style="height: 4000px"></div>
+<div class="footer">11</div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery实现图片轮播</title>
+<script src="js/jquery-1.11.1.js"></script>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+
+    html {
+        ov/*erflow-y: scroll;
+        filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+        -webkit-filter: grayscale(100%);*/
+    }
+    #banner{
+		width: 478px;
+		height: 286px;
+		border: 1px solid #666;
+		overflow: hidden;
+		position: relative;
+	}
+	.banner-bg{
+		width: 100%;
+		height: 30px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		background: #000;
+		opacity: 0.5;
+		filter: alpha(opacity=50);
+		z-index: 1000;
+	}
+	#banner img{
+		border: none;
+	}
+	.banner-info{
+		height: 22px;
+		position: absolute;
+		left: 5px;
+		bottom: 0;
+		z-index: 1001;
+		cursor: pointer;
+		color: white;
+	}
+	#banner ul{
+		position: absolute;
+		bottom: 3px;
+		right: 5px;
+		list-style: none;
+		border: 1px solid #fff;
+		opacity: 0.8;
+		filter: alpha(opacity=80);
+		z-index: 1002;
+	}
+	#banner ul li{
+		float: left;
+		display: block;
+		padding: 0 8px;
+		border: 1px solid #e5eaff;
+		cursor: pointer;
+		color: #fff;
+		background: grey;
+	}
+	#banner ul li.on{
+		background: #900;
+	}
+</style>
+<script>
+	var t=n=0,
+		count;
+	$(function(){
+		count=$('.banner-list a').length;
+		$('#banner li').click(function(){
+			var i=$(this).text()-1;
+			n=i;
+			if(i>=count) return;
+			$('.banner-info').html($('.banner-list a').eq(i).find('img').attr('alt'));
+			$('.banner-info').unbind().click(function(){
+				window.open($('.banner-list a:eq(i)').attr('href'),'_blank')
+			})
+			$('.banner-list a').filter(':visible').fadeOut(1000).parent().children().eq(i).fadeIn(1000);
+			$(this).addClass('on').siblings().removeClass('on');
+		})
+			t=setInterval(showAuto,3000);
+			$("#banner").hover(function(){
+				clearInterval(t),function(){t= setInterval(showAuto, 3000)};
+			})
+            function showAuto()
+            {
+                n = n >=(count -1) ?0 : ++n;
+                $("#banner li").eq(n).trigger('click');
+            }
+	})
+	
+
+</script>
+</head>
+<body>
+<div id="banner">
+	<div class="banner-bg"></div>
+	<!-- <div class="banner-info">魅力</div> -->
+	<ul>
+		<li class="on">1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+	<div class="banner-list">
+		<a href="http://www.baidu.com"><img src="images/o_p1.jpg" alt="魅力"></a>
+		<a href="http://www.taobao.com"><img src="images/o_p2.jpg" alt="诱惑"></a>
+		<a href="http://www.jd.com"><img src="images/o_p4.jpg" alt="性感"></a>
+		<a href="http://www.baidu.com"><img src="images/o_p4.jpg" alt="动人"></a>
+	</div>
+</div>
+</body>
+</html>

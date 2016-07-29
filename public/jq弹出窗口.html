@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>jquery弹出窗口</title>
+<script src="js/jquery-1.11.1.js"></script>
+<style>
+body{padding:0px; margin:0px;}
+.tc_bg{background:#000; width:100%; height:100%; z-index:500; top:0; position:fixed; filter:alpha(opacity=50); -moz-opacity:0.5; -khtml-opacity: 0.5; opacity: 0.5;}
+.tc_con{width:485px; height:265px; border:1px solid #ffc8c8; background:#fee1e1; position:fixed; z-index:10000; top:0px;}
+</style>
+<script>
+    $(document).ready(function(){
+        $(".tc").hide();
+        $(".but_fb").click(function(){
+            $(".tc").show();
+        });
+        $(".tc").click(function(){
+            $(this).hide();
+        });
+    });
+</script>
+</head>
+<body>
+<div class="but_fb">单击出现</div>
+<!--弹出层-->
+<div class="tc">
+    <div class="tc_bg"></div>
+    <div>
+        <img  class="tc_con" id="tc_con" src="images/arrow_off.gif" width="18" height="18" class="gb" />
+    </div>
+    <SCRIPT>
+        var a = document.getElementById("tc_con");
+        a.style.left=(document.body.clientWidth/2-a.offsetWidth/2)+"px";
+        a.style.top=(document.documentElement.clientHeight/2-a.offsetHeight/2)+"px";
+    </SCRIPT>
+</div>
+<div style="height: 2000px"></div>
+</body>
+</html>

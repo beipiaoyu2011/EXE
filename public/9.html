@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>9</title>
+<script src="js/jquery-1.11.1.js"></script>
+<script>
+    $(function(){
+        var x=31;
+        var count=function(){
+            x--;
+            $('#con').html(x)
+            setTimeout(count,1000);
+            if(x=='0'){
+                $('.div2').html('重新发送')
+            }
+//            else if(x<='1'){
+//                x=31;
+//            }
+        }
+        count()
+    })
+</script>
+<style>
+    .div1{
+        border: 1px solid red;
+        display: none;
+    }
+    .div2{
+        border: 1px solid gray;
+        width: 200px;
+        padding-left: 10px;
+    }
+</style>
+</head>
+<body>
+<div class="div2">收到信息 <b id="con"></b> s后重新发送</div>
+
+<div class="div1">欢迎光临</div>
+</body>
+</html>

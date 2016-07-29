@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>鼠标点击后无文字，挪开鼠标后有文字</title>
+<script src="js/jquery-1.11.1.js"></script>
+<script>
+$(function(){
+    $('#account').on('focus',function(){
+        var oldValue=$(this).val();
+        if(oldValue==this.defaultValue){
+            $(this).val('');
+        }
+    })
+    $('#account').on('blur',function(){
+        var oldValue=$(this).val();
+        if(oldValue==''){
+            $(this).val(this.defaultValue);
+        }
+    })
+})
+</script>
+</head>
+<body>
+<input type="text" value="你好 请输入关键字" id="account">
+</body>
+</html>

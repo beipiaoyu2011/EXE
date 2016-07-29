@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>Tab</title>
+<script src="js/jquery-1.11.1.js"></script>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+}
+div{
+    width: 184px;
+    height: 100px;
+    border: 1px solid gray;
+    display: none;
+}
+.tab{
+    list-style: none;
+    width: 200px;
+    overflow: hidden;
+}
+.tab li{
+    float: left;
+    width: 60px;
+    border: 1px solid red;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+}
+.on{
+    display: block;
+}
+.cur{
+    background: red;
+    color: #fff;
+}
+</style>
+<script>
+    $(function(){
+        $('.tab li').click(function(){
+            $(this).addClass('cur').siblings().removeClass('cur');
+            $("div").eq($(this).index()).addClass("on").siblings().removeClass('on');
+        })
+    })
+</script>
+
+</head>
+<body>
+<ul class="tab">
+    <li class="cur">最新</li>
+    <li>热门</li>
+    <li>新闻</li>
+</ul>
+<div class="on">11</div>
+<div>22</div>
+<div>33</div>
+<br/>
+<input type="text" value="你好请输入密码" onfocus="if(this.value=='你好请输入密码'){value=''}" onblur="if(this.value==''){value='你好请输入密码'}">
+</body>
+</html>

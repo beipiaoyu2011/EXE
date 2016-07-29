@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>15</title>
+	<script src="js/jquery-1.11.1.js"></script>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		
+		ul {
+			list-style: none;
+		}
+		
+		.nav {
+			width: 100px;
+			text-align: center;
+			border: 1px solid grey;
+		}
+		
+		.active {
+			cursor: pointer;
+			border: 1px solid red;
+			background: #f5f5f5;
+		}
+		
+	</style>
+	<script>
+				$(function() {
+					var $li = $('#demo ul').find('li:not(.active)');
+					var $active = $('#demo ul').find('li.active');
+					$.each($active, function() {
+						$(this).on('click', function() {
+							$li.slideDown();
+							console.log($li);
+							if ($(this).siblings().css('display') == 'none') {
+								$(this).siblings().slideUp();
+							}
+						})
+					})
+				})
+	</script>
+
+</head>
+
+<body>
+	
+	<div id="demo">
+		<ul class="nav">
+			<li class="active">1</li>
+			<li style="display:none">11</li>
+			<li style="display:none">12</li>
+			<li style="display:none">13</li>
+		</ul>
+		<ul class="nav">
+			<li class="active">2</li>
+			<li style="display:none">21</li>
+			<li style="display:none">22</li>
+			<li style="display:none">23</li>
+		</ul>
+		<ul class="nav">
+			<li class="active">3</li>
+			<li style="display:none">31</li>
+			<li style="display:none">32</li>
+			<li style="display:none">33</li>
+		</ul>
+		<ul class="nav">
+			<li class="active">4</li>
+			<li style="display:none">41</li>
+			<li style="display:none">42</li>
+			<li style="display:none">43</li>
+		</ul>
+	</div>
+</body>
+
+</html>

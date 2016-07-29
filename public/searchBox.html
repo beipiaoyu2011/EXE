@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>下拉搜索框</title>
+<link rel="stylesheet" href="css/searchBox.css"/>
+<script src="js/jquery-1.11.1.js"></script>
+<script>
+$(function(){
+    $('.selectBtn').on('click',function(){
+        $('.select-ul').toggle();
+        var changeType=$('.select-ul').find('li');
+        $.each(changeType,function(i){
+            $(this).hover(function(){
+                $(this).addClass('active').siblings().removeClass('active');
+            })
+            $(this).on('click',function(){
+                $('.mySelect').val($(this).text());
+                $('.mySelect').attr('key',$(this)).attr('key');
+                $('.select-ul').hide();
+            })
+        })
+    })
+
+})
+</script>
+</head>
+<body>
+<div class="searchBox">
+    <div class="search-select-box">
+        <input class="mySelect" type="text" value="基金产品" key='1' size="7" readonly="readonly">
+        <input class="selectBtn" type="button"/>
+        <ul class="select-ul">
+            <li class="item" key='1'>基金产品</li>
+            <li class="item" key='2'>基金经理</li>
+            <li class="item" key='3'>新闻资讯</li>
+            <li class="item" key='4'>基金排名</li>
+        </ul>
+    </div>
+    <input class="select-text" type="text" placeholder="请输入关键字">
+    <div class="search-btn">搜索</div>
+    <div class="clear"></div>
+</div>
+</body>
+</html>

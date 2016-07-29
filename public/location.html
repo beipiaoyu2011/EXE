@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		function getQueryStringArgs(){
+			//取得带？号的字符串
+			var qs=location.search.length?location.search.substring(1):'';
+			//定义保存的对象
+			var arg={};
+			//取得第一项
+			var items=qs.length?qs.split('&'):{};
+			var item=null,
+				value=null,
+				name=null,
+				len=items.length;
+			for(var i=0;i<len;i++){
+				item=items[i].split('=');
+				name=decodeURIComponent(item[0])
+				value=decodeURIComponent(item[1]);
+				if(name.length){
+					arg[name]=value;
+				}
+			}
+			return arg;
+		}
+		getQueryStringArgs();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

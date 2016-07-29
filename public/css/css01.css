@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+th,td{
+    border: 1px solid gray;
+    padding: 10px;
+    width: 20%;
+    text-align: center;
+}
+
+.pickedBg{
+    background: red;
+}
+#mm {
+    
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>44</title>
+<style></style>
+<style>
+div{
+    border: 1px solid #722b2b;
+}
+.picked{
+    background: #2dac80;
+}
+
+</style>
+<script>
+window.onload=myClick;
+function myClick(){
+    document.getElementById('mm').onmousedown=toggleColor;
+}
+
+function toggleColor(){
+    if(document.getElementById('mm').style.background='white'){
+        document.getElementById('mm').style.background='red';
+    }else if(document.getElementById('mm').style.background='red'){
+        document.getElementById('mm').style.background='white';
+    }
+}
+
+</script>
+</head>
+<body>
+<div id="mm">
+    1112222
+</div>
+</body>
+</html>

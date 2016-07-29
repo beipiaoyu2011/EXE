@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.clear{
+    clear: both;
+}
+.clear:before ,.clear:after{
+    content: '';
+}
+.searchBox{
+    width: 648px;
+    margin: 0 auto;
+    margin-top: 200px;
+    border: 1px solid #d92318;
+    position: relative;
+}
+.search-select-box{
+    width: 120px;
+    height: 40px;
+    float: left;
+    border: 2px solid #d92318;
+    border-right: none;
+    position: relative;
+}
+.mySelect{
+    height: 40px;
+    line-height:40px;
+    padding-left: 10px;
+    float: left;
+    vertical-align: middle;
+    display: block;
+    outline: none;
+    border: none;
+
+}
+.selectBtn{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #F4F4F4 url("../images/arrow-down.png") no-repeat center center;
+}
+.select-ul{
+    width: 120px;
+    position: absolute;
+    top: 43px;
+    left: -2px;
+    list-style: none;
+    border: 2px solid #d92318;
+    border-top: none;
+    text-align: center;
+    display: none;
+}
+.select-ul li{
+    line-height: 24px;
+    cursor: pointer;
+}
+.select-text{
+    width: 380px;
+    height: 40px;
+    float: left;
+    border: 2px solid #d92318;
+    outline: none;
+    padding-left: 15px;
+}
+.search-btn{
+    width: 127px;
+    height: 44px;
+    float: left;
+    text-align: center;
+    line-height: 44px;
+    vertical-align: middle;
+    color: #ffffff;;
+    background: #d92318;
+    cursor: pointer;
+}
+.active{
+    background: #d92318;
+    color: #ffffff;
+}

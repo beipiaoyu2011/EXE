@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12</title>
+	<script src="js/jquery-1.11.1.js"></script>
+	<script>
+	$(function(){
+		var inputTitle=$('input').attr('title');
+		$('button').click(function(){
+			var inp=$(this).next();
+			if(inp.attr('title')==inputTitle){
+				inp.removeAttr('title')
+				alert('11')
+			}else{
+				inp.attr('title',inputTitle)
+				alert('22')
+			}
+			
+			$('#demo').html($('input').attr('title'))
+		})
+	})
+	</script>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+<button>click</button>	
+<input type="text" title="hello world">
+<div id="demo">input title is now </div>
+</body>
+</html>

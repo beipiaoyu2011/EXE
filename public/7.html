@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>7</title>
+<script src="js/jquery-1.11.1.js"></script>
+<script>
+    $(function(){
+        $('input').on('change',function(){
+            var $this=$(this).next().html();
+            if($(this).prop('checked')){
+                $('div').html($this)
+            }
+            if($('div').html()=='11'){
+                alert('112')
+            }
+        })
+    })
+</script>
+<style>
+    label{
+        display: block;
+        margin-bottom: 10px;;
+    }
+</style>
+</head>
+<body>
+<div></div>
+<label>
+    <input type="radio" name="1"><span>11</span>
+</label>
+<label>
+    <input type="radio" name="1"><span>1122</span>
+</label>
+<label>
+    <input type="radio" name="1"><span>11444</span>
+</label>
+</body>
+</html>

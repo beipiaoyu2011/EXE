@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>6</title>
+<script src="js/jquery-1.11.1.js"></script>
+<script>
+    $(function(){
+        $('div').click(function(){
+            var index=$('div').index(this);
+            console.log(index)
+            $('span').html('that index is '+index)
+        })
+    })
+    $(window).unload(function(){
+            return 'goodbye';
+//        alert('11')
+    })
+
+</script>
+</head>
+<body>
+<span>11</span>
+<div style="background: yellow;">this is first div</div>
+<div style="background: yellow;">this is second div</div>
+<div style="background: yellow;">this is third div</div>
+</body>
+</html>

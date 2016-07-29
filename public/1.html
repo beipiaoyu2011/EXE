@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>1</title>
+<script src="js/jquery-1.11.1.js"></script>
+<script>
+    $(function(){
+//        $('input').on('click',function(){
+//            $(this).val('')
+//            $(this).next().next().fadeToggle()
+//        })
+//        $('input').on('blur',function(){
+//            $(this).next().next().hide()
+//        })
+
+
+        $('.ad').on('click',function(){
+            $(this).hide();
+            $('.inp').fadeIn();
+            $(this).next().on('click',function(){
+                $(this).val('')
+                $(this).next().next().fadeToggle()
+            })
+            $(this).next().on('blur',function(){
+                $(this).next().next().fadeOut()
+            })
+//            alert('11')
+        })
+    })
+</script>
+<style>
+    .inp{
+        position: fixed;
+        left: 0;
+        top: 40%;
+        z-index: 22;
+        display: none;
+    }
+    .div2{
+        position: fixed;
+        left: 200px;
+        top: 40%;
+        z-index: 22;
+        display: none;
+    }
+    .ad{
+        width: 20px;
+        height: 20px;
+        background: red;
+        position: fixed;
+        left: 0;
+        top: 40%;
+        z-index: 33;
+        cursor: pointer;
+    }
+</style>
+</head>
+
+<body>
+<div class="ad">11</div>
+<input type="text" value="111" class="inp">
+<div style="border: 1px solid red;width: 200px;height: 100px;display: none">111111</div>
+<div style="border: 1px solid red;width: 200px;height: 100px;display: none" class="div2">22</div>
+<div style="height: 2000px"></div>
+</body>
+</html>

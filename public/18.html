@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>18</title>
+	<script>
+//		function createPerson(name,job,age){
+//			var o=[];
+//			o.name=name;
+//			o.job=job;
+//			o.age=age;
+//			o.sayName=function(){
+//				alert(this.name)
+//			}
+//			return o;
+//		}
+//		var person=createPerson('wangzhao','web','23');
+//         person.sayName()	
+		
+		
+		
+		//改进
+		
+		function Person(name,age,job){
+			this.name=name;
+			this.age=age;
+			this.job=job;
+			this.sayName=function(){
+				alert(this.name);
+			}
+		}
+//		var person1=new Person('wangzhao','23','web');
+//		person1.sayName()
+//		alert(person1.constructor==Person)//constructor属性是来标识对象类型的 instanceof更可靠
+//		alert(person1 instanceof Object)
+		var o=[];
+		Person.call(o,'wz','12','dd')
+		o.sayName()
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

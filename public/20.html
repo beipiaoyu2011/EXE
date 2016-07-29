@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/jquery-1.11.1.js"></script>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.tip{
+			position: absolute;
+			display: none;
+			border: 1px solid red;
+		}
+	</style>
+	<script>
+		$(function(){
+			var mouseTip=function(id,con){
+				$('<div class="tip">'+con+'</div>').appendTo($(id).parent());
+				$(id).mousemove(function(e){
+					var moveMouseX=e.pageX;
+					var idX=$(id).offset().left;
+					var idH=$(id).offset().top+$(id).outerHeight()/2+e.pageY;
+					$(this).next('.tip').show().css({
+						left:moveMouseX,
+						top:idH
+					})
+				}).mouseout(function(){
+					$(this).next('.tip').css('display','none');
+				})
+			}
+			$('#demo').mousemove(function(){
+				mouseTip('#demo','11');
+			})
+			$('#mima').mousemove(function(){
+				mouseTip('#mima','55');
+			})
+		})
+	</script>
+</head>
+<body>
+<div style="margin:0 auto;text-align:center;">
+	<label>
+		账号：<input type="text" placeholder="输入账号" id="demo">	
+	</label>
+	<label>
+		密码：<input type="text" placeholder="输入密码" id="mima">	
+	</label>
+</div>
+</body>
+</html>

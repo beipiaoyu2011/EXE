@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>55</title>
+<script>
+	function SuperType(){
+		this.colors=['red','blue','white'];
+	}
+	function SubType(){
+		SuperType.call(this)//继承
+	}
+//	SubType.prototype=new SuperType();
+	var instance=new SubType();
+	instance.colors.push('black');
+	alert(instance.colors);
+	var instance2=new SubType();
+	alert(instance2.colors);
+//	var instance=new SuperType();
+//	alert(instance.colors.join('|'));
+//	function SuperType(){
+//		this.propery=true;
+//	}
+//	SuperType.prototype.getSuperValue=function(){
+//		return this.propery;
+//	}
+//	function SupType(){
+//		this.subPropery=false;
+//	}
+//	SupType.prototype=new SuperType();
+//	SupType.prototype.getSubValues=function(){
+//		return this.subPropery;
+//	}
+//	SupType.prototype.getSuperValue=function(){
+//		return false;
+//	}
+//	var instance=new SupType();
+//	alert(instance.getSuperValue());
+//	alert(instance instanceof Object);
+//	alert(instance instanceof SuperType);
+//	alert(instance instanceof SupType);
+//	alert(Object.prototype.isPrototypeOf(instance));
+//	alert(SuperType.prototype.isPrototypeOf(instance));
+//	alert(SupType.prototype.isPrototypeOf(instance));
+	
+//	function SpecialArray(){
+//		var values=new Array();
+//		values.push.apply(values,arguments);
+//		values.toPipedString=function(){
+//			return this.join('|');
+//		}
+//		return values;
+//	}
+//	var friend=new SpecialArray('bill',11,'softWare');
+//	alert(friend.toPipedString());
+//	function Person(name,age,job){
+//		var o={};
+//		o.name=name;
+//		o.age=age;
+//		o.job=job;
+//		o.sayName=function(){
+//			alert(this.name);
+//		}
+//		return o;
+//	}
+	
+//	function Person(name,age,job){
+//		this.name=name;
+//		this.age=age;
+//		this.job=job;
+//		if(typeof this.sayName!='function'){
+//			Person.prototype.sayName=function(){
+//				alert(this.name);
+//			}
+//		}
+////	}
+//	var person1=new Person('Gate',11,'Softwart Enginerr');
+//	person1.sayName();
+//	var person1=new Person('john',11,'Softwart Enginner');
+//	alert(person1.age)
+//	function Person(){}
+//	Person.prototype={
+////		constructor:Person,
+//		'name':'Gate',
+//		'age':23,
+//		'job':'Sofeware Engineer',
+//		'sayName':function(){
+//			alert(this.name);
+//		}
+//	}
+//	var person1=new Person();
+//	alert(person1 instanceof Person);
+//	alert(person1 instanceof Object);
+//	alert(person1.constructor==Person);
+//	alert(person1.constructor==Object);
+//	Person.prototype.name='Gate';
+//	Person.prototype.age=23;
+//	Person.prototype.job='Software Engineer';
+//	Person.prototype.sayName=function(){
+//		alert(this.name);
+//	}
+//	var person1=new Person();
+//	alert(Object.getOwnPropertyNames(Person.prototype));
+//	var person1={
+//			'name':'bill',
+//			'age':11
+//		}
+//		alert(Object.keys(person1));
+//		alert(Object.getOwnPropertyNames(person1))
+//	var person1=new Person();
+//	var person2=new Person();
+//	function hasPrototypeProperty(object,name){
+//		return !object.hasOwnProperty(name)&&name in object;
+//	}
+// 
+//	var o={
+//		toString:function(){
+//			return "My Object";
+//		}
+//	}
+//	for(var prot in o){
+//		if(prot=='toString'){
+//			alert('Found toString');
+//		}
+//	}
+//	person1.name='bill';
+//	alert(hasPrototypeProperty(person1,'name'));
+//	alert('name' in person1);
+//	alert(person1.hasOwnProperty('name'));
+//	person1.name='bill';
+//	alert(person1.name);
+//	alert(person2.name);
+//	alert(Object.getPrototypeOf(person1)==Person.prototype);
+//	alert(Object.getPrototypeOf(person1).name);
+//	alert(person1 instanceof Person)
+</script>
+</head>
+<body>
+
+
+
+</body>
+</html>
