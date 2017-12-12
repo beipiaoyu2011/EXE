@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>可拖动的进度条</title>
+        <script src="js/jquery-1.11.1.js"></script>
+        <style>
+            * {
+                /*margin: 0;
+            padding: 0;*/
+            }
+            .father-div {
+                float: left;
+                width: 200px;
+                height: 10px;
+                font-size: 0;
+                line-height: 0;
+                background: #f2f2f2;
+                border: 1px solid #dedede;
+                position: relative;
+                margin-top: 10px;
+                margin-right: 10px;
+                cursor: pointer;
+                -moz-border-radius: 6px;
+                -webkit-border-radius: 6px;
+                border-radius: 6px;
+            }
+            .father-div h3,
+            .father-div h4 {
+                margin: 0;
+                position: absolute;
+                left: -1px;
+                top: -1px;
+                height: 10px;
+                font-size: 0;
+                line-height: 0;
+                width: 10%;
+                background: #a3d9f4;
+                border: 1px solid #187aab;
+                z-index: 99;
+                -moz-border-radius: 6px;
+                -webkit-border-radius: 6px;
+                border-radius: 6px;
+            }
+            .father-div h4 {
+                border: 1px solid #91cdea;
+                z-index: 88;
+            }
+        </style>
+        <script>
+            $(function () {
+                $(".father-div").on("mousemove", function (e) {
+                    var $mouse = e.pageX - $(this).offset().left;
+                    var $span = Math.round($mouse / 2);
+                    $(this).find('h4').stop().animate({
+                        width: $span + '%'
+                    }, 50);
+                    $(this).next('span').text($span);
+                }).on('mouseleave', function () {
+                    $(this).find('h4').stop().animate({
+                        width: '10%'
+                    }, 50);
+                    var $mousex = $(this).find('h3').width();
+                    var $spanx = Math.round($mousex / 2);
+                    if ($spanx >= 40) {
+                        $(this).next('span').text("过热");
+                    } else {
+                        $(this).next('span').text($spanx);
+                    }
+                }).on("click", function (e) {
+                    var $mouse = e.pageX - $(this).offset().left;
+                    var $span = Math.round($mouse / 2);
+                    $(this).find('h3').stop().animate({
+                        width: $span + '%'
+                    }, 100);
+                    if ($span >= 40) {
+                        $(this).next('span').css("color", "red").text('过热');
+                    } else {
+                        $(this).next('span').css("color", "white").text($span);
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="father-div">
+            <h3 style="width:50%;"></h3>
+            <h4></h4>
+        </div>
+        温度：<span>50</span>
+    </body>
+</html>
