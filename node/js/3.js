@@ -3,7 +3,6 @@ var red = require('chalk').red;
 var store = require('store');
 // var { URL } = require('url');
 // var fileUrl = new URL('file:///tmp/666.txt');
-
 const watcher = fs.watch('./tmp', { encoding: 'buffer' }, (eventType, fileName) => {
     if (fileName) {
         // console.log(red('.....watch.......'))
