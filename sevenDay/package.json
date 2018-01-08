@@ -1,11 +1,11 @@
 {
-  "name": "sevenday",
+  "name": "node-echo",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "./lib/echo.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "wz",
-  "license": "MIT"
+  "devDependencies": {
+    "argv": "0.0.2"
+  }
 }
