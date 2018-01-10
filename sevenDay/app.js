@@ -6,8 +6,15 @@ var superagent = charset(require('superagent'));//解决乱码
 var cherrio = require('cheerio');//jquery
 var app = express();
 
-
-
+app.get('/', function (req, res) {
+    var str = '<div style="margin: 30px auto;text-align:center;">';
+    str += '<h2>Welcome to my website</h2>';
+    str += '<p>List: </p>';
+    str += '<p><a href="/dy">电影天堂</a></p>';
+    str += '<p><a href="/csdn">CSDN</a></p>';
+    str += '</div>';
+    res.send(str);
+});
 
 app.get('/dy', function (req, res, next) {
     var url = 'http://www.dytt8.net';
