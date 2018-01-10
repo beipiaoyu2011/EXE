@@ -54,7 +54,7 @@ function getMovies() {
                     var download_url = _$('#Zoom table a').text();
                     var title = _$('.bd3r .title_all').text();
                     title = title.substring(title.indexOf('《') + 1, title.indexOf('》'));
-                    console.log(title)
+                    // console.log(title)
                     var total_movie = title + '~~' + download_url + '\n';
                     // var total_movie = download_url.split(']')[1].substr(1) + '~~' + download_url + '\n';
                     var buff = new Buffer(total_movie);
@@ -73,7 +73,6 @@ app.get('/dy', function (req, res, next) {
         url_data = data.split('\n').filter(function (n) {
             return n != '';
         });
-        var count = 0;
         var str = '<div style="width:40%;">';
         item.forEach(m => {
             str += '<h3 style="padding-left:10px;">' + m.name + '</h3>';
