@@ -1,7 +1,6 @@
 {
-  "name": "node-echo",
+  "name": "node",
   "version": "1.0.0",
-  "main": "./lib/echo.js",
   "scripts": {
     "dev": "node app.js"
   },
