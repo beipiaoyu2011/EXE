@@ -7,6 +7,7 @@ var cherrio = require('cheerio');//jquery
 var app = express();
 var fs = require('fs');
 var path = require('path');
+var sendMail = require('./lib/mail');
 
 app.get('/', function (req, res) {
     var str = '<div style="margin: 30px auto;text-align:center;">';
@@ -24,7 +25,7 @@ function getMovies() {
     var url = 'http://www.dytt8.net';
     superagent.get(url + '/index.htm').charset().end((err, sres) => {
         if (err) {
-            return next(err);
+            throw err;
         }
         var $ = cherrio.load(sres.text);
         $('.bd3rl .co_area2').each(function (i, n) {
@@ -68,12 +69,14 @@ getMovies();
 
 app.get('/dy', function (req, res, next) {
     var url_data = [];
+    var img_url = path.join(__dirname, './doc', 'wz.jpg');
+    console.log(img_url);
     fs.readFile(path.join(__dirname, './doc', 'dy.txt'), 'utf-8', (err, data) => {
         if (err) throw err;
         url_data = data.split('\n').filter(function (n) {
             return n != '';
         });
-        var str = '<div style="width:40%;">';
+        var str = '<div style="width:50%;">';
         item.forEach(m => {
             str += '<h3 style="padding-left:10px;">' + m.name + '</h3>';
             m.data.forEach((n) => {
@@ -92,7 +95,9 @@ app.get('/dy', function (req, res, next) {
                 str += '<div style="background:#fdfddf;border:1px solid #ccc;padding:3px 10px;margin-bottom:10px;">' + n.download_url + '</div>';
             });
         });
+        str += '<img src="' + img_url + '" />';
         str += '</div>';
+        sendMail(str);
         res.send(str);
     })
 });
