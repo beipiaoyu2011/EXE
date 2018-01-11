@@ -69,21 +69,20 @@ getMovies();
 
 app.get('/dy', function (req, res, next) {
     var url_data = [];
-    var img_url = path.join(__dirname, './doc', 'wz.jpg');
-    console.log(img_url);
+    var img_url = 'https://raw.githubusercontent.com/huainanhai/EXE/master/sevenDay/doc/wz.jpg';
     fs.readFile(path.join(__dirname, './doc', 'dy.txt'), 'utf-8', (err, data) => {
         if (err) throw err;
         url_data = data.split('\n').filter(function (n) {
             return n != '';
         });
         var str = '<div style="width:50%;">';
+        str += '<h4 style="padding-left:10px;">(温馨提示：复制ftp开头的路径到‘迅雷极速版’（邮件附件里面有）就会自动下载电影了, 最新免费电影节目单不定时更新，福利呦)</h4>'
         item.forEach(m => {
             str += '<h3 style="padding-left:10px;">' + m.name + '</h3>';
             m.data.forEach((n) => {
                 url_data.forEach(j => {
                     var name = j.split('~~')[0];
                     name = name.split('.')[0];
-                    // console.log(name);
                     if (n.title.indexOf(name) > -1) {
                         n.download_url = j.split('~~')[1];
                     }
@@ -95,7 +94,7 @@ app.get('/dy', function (req, res, next) {
                 str += '<div style="background:#fdfddf;border:1px solid #ccc;padding:3px 10px;margin-bottom:10px;">' + n.download_url + '</div>';
             });
         });
-        str += '<img src="' + img_url + '" />';
+        str += '<img src="' + img_url + '" width="540" height="748" />';
         str += '</div>';
         sendMail(str);
         res.send(str);
