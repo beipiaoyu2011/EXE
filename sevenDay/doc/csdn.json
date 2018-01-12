@@ -1,1 +1,57 @@
-[{"title":"\n\n        \n\n\n        Node.js 如何获取重定向以后的URL\n      ","href":"https://cnodejs.org/topic/5a58750ea3692d014f4f140c","commit1":"\n你用的是request库，那应该先看看这个库，有没有对rediect的处理。（比如参数followRedirect）\n原生情况下，按http协议：先是先判断res.statusCode是不是3xx，然后取res.getHeader(‘location’)\n\n"},{"title":"","href":"https://cnodejs.org/topic/5a5709699d371d4a059eea03","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/590770b55bb7efe417431f28","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5a575f399d371d4a059eea13","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5a5605d19288dc8153287d4d","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5a5730cea3692d014f4f13d3","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/59ec84ab041a7768344945e2","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5a4db120ebc575dc49b27108","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5a559e54afa0a121784a8adc","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5a580f57afa0a121784a8b40","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5930cf8203dba3510d8a62e1","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5a5868b89d371d4a059eea64","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5a56ce48a3692d014f4f13b1","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/592917b59e32cc84569a7458","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5a54a8a4afa0a121784a8ab0","commit1":"暂无评论"},{"title":"\n\n        \n\n\n        nodejs实现查询火车票信息\n      ","href":"https://cnodejs.org/topic/5a56e0e19288dc8153287d66","commit1":"这个node 版本是几?,我这里请求接口不通\n"},{"title":"","href":"https://cnodejs.org/topic/5a531ac2afa0a121784a8a48","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5a54132299d207fa49f5cd33","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5a55d17bba3169bd04ce8a49","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5a55cd3ea3692d014f4f1387","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5a5575e999d207fa49f5cd88","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5a55892399d207fa49f5cd92","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5a5718139288dc8153287d81","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5a328967d92f2f5b185ace96","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5a2403226190c8912ebaceeb","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5a571a719d371d4a059eea06","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5a561277a3692d014f4f139a","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5a57633bafa0a121784a8b35","commit1":"暂无评论"},{"title":"","href":"https://cnodejs.org/topic/5939fa64d3575f1303de3aab","commit1":"暂无评论"},{"title":"\n\n        \n\n\n        微信跳一跳辅助工具（基于Node.js）\n      ","href":"https://cnodejs.org/topic/5a4dd8489ea8f8bc490e64a2","commit1":"为了游戏也是拼了\n"},{"title":"\n\n        \n\n\n        pm2 cluster方案的执行效率为什么不及 node的单进程、多进程？\n      ","href":"https://cnodejs.org/topic/58e6690262b12d1b052e7923","commit1":"自己顶一下。\n"},{"title":"\n\n        \n\n\n        express如何实现表单中的method转换，比如：POST转成PUT\n      ","href":"https://cnodejs.org/topic/5a571ba39d371d4a059eea07","commit1":"POST转POST？\n直接用ajax请求吧？或者动态加载表单带method的部分？\n"},{"title":"\n\n        \n\n\n        使用Node.js开发以太坊ERC 20标准的代币\n      ","href":"https://cnodejs.org/topic/5a51f943a3692d014f4f128d","commit1":"那啥，是用Js的方式来写合约代码？\n来自酷炫的 CNodeMD\n"},{"title":"\n\n        \n\n\n        js ==  与 === 性能问题\n      ","href":"https://cnodejs.org/topic/5a58130da3692d014f4f13ec","commit1":"那是因为你比较的两个东西本来就一样，你试试看下面类型不一样的比较呢？\n\nlet t1 = Date.now();\nfor (let i = 0; i < 10000000; i++) {\n  i === '1'\n}\nconsole.log(Date.now() - t1);\nconsole.log('==============================')\n\nlet t2 = Date.now();\nfor (let j = 0; j < 10000000; j++) {\n  j == '1'\n}\nconsole.log(Date.now() - t2);\n== 要做类型转换分别进行两边的比较，所以这种情况下会慢很多\n"},{"title":"\n\n        \n\n\n        需要将用户的微信头像拼接成公司logo...求思路...\n      ","href":"https://cnodejs.org/topic/5a45bab78230827a18293b82","commit1":"Markdown 怎么这样了.\n"},{"title":"\n\n        \n\n\n        【新手提问】 node异步和js异步\n      ","href":"https://cnodejs.org/topic/5a561d7b9288dc8153287d4e","commit1":"我理解楼主是有两个问题：1、异步究竟指啥？ 2、js中的异步主线程没干活谁在干活？\n如果楼主还差很多概念不是很清楚，那需要多了解一下，这里一言两语很难让你透彻理解。\n我试着按这俩问题回答一下:\n异步一般指调用后，不等真正要的事做完，就直接返回执行权。真正要做的事做完了，通过消息机制和开始返回的引用获得结果–并行重叠。\n对应的同步的调用后，要一直等到真正的事做完才返回–顺序依赖。\nnode中的异步，多数由libuv分类完成（交给了主线程之外）。其中多数networkIO类任务交给os(socket epoll)；FileIO类会交给node启动时一同启动的工作线程池worker thread_pool（主线程之外的线程，默认启动数量是四个）。这就出现了上面说的并行，任务完成后，会通过消息机制把结果和给回到主线程，然后如楼主所说进入队列等待执行回调。\n另外，还有一对概念：并发concurrency 和 并行parallelism 的区别。首先单核在某一时间点，是只能执行一个任务的。但可以通过快速切换任务，对外看起来是在同时执行多个任务。敲黑板–>按csapp里的解释：并发指多个任务间，开始和结束的时间有重叠，但这种重叠背后有可能是单核不停的在多任务间切换，也有另一种可能是多核同一时间上的一起执行多个任务。这后面另一种可能，就是所谓并行。\n希望对楼主有帮助：）\n参考链接：\nhttp://docs.libuv.org/en/v1.x/design.html\nhttps://nodejs.org/en/docs/guides/\n知乎：怎样理解阻塞非阻塞与同步异步的区别\nhttps://github.com/danbev/learning-nodejs\n"},{"title":"\n\n        \n\n\n        web3.js简单介绍[区块链]\n      ","href":"https://cnodejs.org/topic/5a570d3aafa0a121784a8b17","commit1":"暂无评论"},{"title":"\n\n        \n\n\n        selenium webdriver相关\n      ","href":"https://cnodejs.org/topic/5a573274afa0a121784a8b29","commit1":"暂无评论"},{"title":"\n\n        \n\n\n        请教大家node.js 又没有类似 underscore 这类基础方法库\n      ","href":"https://cnodejs.org/topic/5a542898a89c475d7ea4fb29","commit1":"看看 lodash\n"},{"title":"\n\n        \n置顶\n\n\n\n        首届蚂蚁金服体验科技大会\n      ","href":"https://cnodejs.org/topic/5a37c17dd92f2f5b185acfc4","commit1":"欢迎大家到时候来面基！ :)\n"}]
+[
+    {
+        "title": "置顶\n\n\n\n        玉伯《从前端技术到体验科技（附演讲视频）》",
+        "href": "https://cnodejs.org/topic/5a54a8a4afa0a121784a8ab0",
+        "commit1": "已经过玉伯本人授权，稍后会同步发到node全栈公众号"
+    },
+    {
+        "title": "置顶\n\n\n\n        测试请发到客户端测试专区，违规影响用户的，直接封号",
+        "href": "https://cnodejs.org/topic/592917b59e32cc84569a7458",
+        "commit1": "其实发到招聘板块，首页是看不到的\nsource vue-cnode mobile 2.0"
+    },
+    {
+        "title": "汉化了一下regexper的正则图标解析 有需要的收藏一下啊",
+        "href": "https://cnodejs.org/topic/5a5718139288dc8153287d81",
+        "commit1": "赞"
+    },
+    {
+        "title": "nest之后，觉得其他框架脚手架可以立碑了……",
+        "href": "https://cnodejs.org/topic/5a559e54afa0a121784a8adc",
+        "commit1": "I am hired for people to profile their fantasies, their deep dark fantasies"
+    },
+    {
+        "title": "置顶\n\n\n\n        首届蚂蚁金服体验科技大会",
+        "href": "https://cnodejs.org/topic/5a37c17dd92f2f5b185acfc4",
+        "commit1": "欢迎大家到时候来面基！ :)"
+    },
+    {
+        "title": "今天遇到一个关于Vuex 的问题",
+        "href": "https://cnodejs.org/topic/5a5868b89d371d4a059eea64",
+        "commit1": ""
+    },
+    {
+        "title": "置顶\n\n\n\n        企业级 Node.js 框架 Egg 发布 2.0，性能提升 30%，拥抱 Async",
+        "href": "https://cnodejs.org/topic/5a2403226190c8912ebaceeb",
+        "commit1": "顺便拉下票，OSChina 开源中国正在举办 2017年度最受欢迎中国开源软件评选，请为 Egg 打 Call~\n另外，顶楼『分享交流』章节的两个 Slide 推荐看下~"
+    },
+    {
+        "title": "Node.js 如何获取重定向以后的URL",
+        "href": "https://cnodejs.org/topic/5a58750ea3692d014f4f140c",
+        "commit1": "你用的是request库，那应该先看看这个库，有没有对rediect的处理。（比如参数followRedirect）\n原生情况下，按http协议：先是先判断res.statusCode是不是3xx，然后取res.getHeader(‘location’)"
+    },
+    {
+        "title": "mongoose中Entity的save操作返回的不是promise吗？",
+        "href": "https://cnodejs.org/topic/5a57633bafa0a121784a8b35",
+        "commit1": "https://www.zhihu.com/question/36273908\nsetTimeout(console.log, 0, 'a')\nconsole.log('b')\nconsole.log('c')           bca   同理"
+    },
+    {
+        "title": "微信跳一跳辅助工具（基于Node.js）",
+        "href": "https://cnodejs.org/topic/5a4dd8489ea8f8bc490e64a2",
+        "commit1": "为了游戏也是拼了"
+    },
+    {
+        "title": "表情包压缩神器，纯JS打造，多参数混合压缩，表情包之王就是你",
+        "href": "https://cnodejs.org/topic/5a58860f9288dc8153287dde",
+        "commit1": ""
+    }
+]
