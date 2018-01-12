@@ -8,6 +8,7 @@ var app = express();
 var fs = require('fs');
 var path = require('path');
 var sendMail = require('./lib/mail');
+var get_csdn_json = require('./lib/eventproxy.js');
 
 app.get('/', function (req, res) {
     var str = '<div style="margin: 30px auto;text-align:center;">';
@@ -126,6 +127,18 @@ app.get('/csdn', function (req, res) {
         res.send(str);
     });
 
+});
+//获取json数据
+app.get('/api/csdn', (req, res) => {
+    get_csdn_json({
+        callbacks: {
+            completeEvent: function () {
+                fs.readFile(path.join(__dirname, './doc', 'csdn.json'), 'utf-8', (err, data) => {
+                    res.send(data);
+                });
+            }
+        }
+    });
 });
 
 app.listen(port, function () {
