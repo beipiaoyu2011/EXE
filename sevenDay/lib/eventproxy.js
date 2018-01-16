@@ -41,7 +41,7 @@ GetJSON.prototype.init = function () {
                     commit1: $('.reply_item').eq(0).find('.markdown-text').text().trim().replace(/\\n{1,}/m, '')
                 });
             });
-            console.log(info_data);
+            // console.log(info_data);
             fs.writeFile(path.join(__dirname, '../doc', 'csdn.json'), '', () => {
             });
             fs.writeFile(path.join(__dirname, '../doc', 'csdn.json'), JSON.stringify(info_data), () => {
