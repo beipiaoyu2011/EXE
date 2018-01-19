@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "argv": "0.0.2",
+    "assert": "^1.4.1",
     "async": "^2.6.0",
     "cheerio": "^1.0.0-rc.2",
     "eventproxy": "^1.0.0",
@@ -15,6 +16,7 @@
     "fs": "0.0.1-security",
     "http": "0.0.0",
     "iconv-lite": "^0.4.19",
+    "mongodb": "^3.0.1",
     "nodemailer": "^4.4.1",
     "path": "^0.12.7",
     "superagent": "^3.8.2",

@@ -20,8 +20,8 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "app",
-            "program": "${workspaceFolder}\\app.js"
+            "name": "db",
+            "program": "${workspaceFolder}\\lib\\db.js"
         },
     ]
 }

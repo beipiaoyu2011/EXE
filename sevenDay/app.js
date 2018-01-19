@@ -9,6 +9,7 @@ var fs = require('fs');
 var path = require('path');
 var sendMail = require('./lib/mail');
 var get_csdn_json = require('./lib/eventproxy.js');
+var db = require('./lib/db');
 
 app.get('/', function (req, res) {
     var str = '<div style="margin: 30px auto;text-align:center;">';
@@ -48,6 +49,7 @@ function getMovies() {
             });
             item.push(obj);
         });
+        db(item);
         fs.writeFile(path.join(__dirname, './doc', 'dy.txt'), '', function () { });
         item.forEach(n => {
             n.data.forEach((m, i) => {
