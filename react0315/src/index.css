@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.mainContent {
+  margin: 100px;
+}
+.status {
+  margin-bottom: 10px;
+}
+.board-row::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.square {
+  width: 34px;
+  height: 34px;
+  /* display: inline-block; */
+  background: #fff;
+  border: 1px solid #999;
+  margin-right: -1px;
+  margin-top: -3px;
+  cursor: pointer;
+  float: left;
+  font-weight: bolder;
+  font-size: 18px;
+}
+.square:focus {
+  outline: none;
+}
