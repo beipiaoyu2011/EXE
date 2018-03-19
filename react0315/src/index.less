@@ -1,29 +1,46 @@
 //out: ./index.css
-*{
+* {
     margin: 0;
     padding: 0;
 }
-.mainContent{
+
+.mainContent {
     margin: 100px;
 }
-.status{
+
+.status {
     margin-bottom: 10px;
 }
-.board-row::after{
+
+.board-row::after {
     clear: both;
     content: '';
     display: table;
 }
-.square{
+
+.square {
     width: 34px;
-    height: 34px;
-    display: inline-block;
+    height: 34px; // display: inline-block;
+    float: left;
     background: #fff;
     border: 1px solid #999;
     margin-right: -1px;
     margin-top: -1px;
     cursor: pointer;
-    &:focus{
+    &:focus {
         outline: none;
+    }
+}
+
+.game {
+    display: flex;
+    flex-direction: row;
+}
+
+.game-info {
+    margin-left: 20px;
+    margin-top: 100px;
+    li{
+        list-style: none;
     }
 }
