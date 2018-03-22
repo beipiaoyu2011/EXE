@@ -1,6 +1,137 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import './index.css';
+import store from './reducer/index.jsx';
+import expect from 'expect';
+import deepFreeze from "deep-freeze";
+
+console.log(store);
+// store.dispatch({ type: 'increment' });
+// store.subscribe(() => {
+//     document.body.innerText = store.getState();
+// })
+// document.addEventListener('click', () => {
+//     store.dispatch({ type: 'increment' });
+// });
+
+const Counter = ({
+    value,
+    onIncrement,
+    onDecrement
+}) => (
+        <div className="counter">
+            <h1>{value}</h1>
+            <button onClick={onIncrement}>+</button>
+            <button onClick={onDecrement}>-</button>
+        </div>
+    );
+
+const render = () => {
+    ReactDom.render(
+        <Counter
+            value={store.getState()}
+            onIncrement={() => store.dispatch({ type: 'increment' })}
+            onDecrement={() => store.dispatch({ type: 'decrement' })}
+        />,
+        document.getElementById('root')
+    )
+};
+
+store.subscribe(render);
+
+render();
+
+
+
+console.log('---------------------------');
+
+
+const todo = (state, action) => {
+    switch (action.type) {
+        case 'ADD_TODO':
+            return {
+                id: action.id,
+                text: action.text,
+                completed: false
+            };
+        case 'TOGGLE_TODO':
+            if (state.id !== action.id) {
+                return state;
+            }
+            return {
+                ...state,
+                completed: !state.completed
+            }
+        default:
+            return state;
+    }
+};
+
+const todos = (state = [], action) => {
+    switch (action.type) {
+        case 'ADD_TODO':
+            return [
+                ...state,
+                todo(null, action)
+            ]
+        case 'TOGGLE_TODO':
+            return state.map(t => todo(t, action))
+        default:
+            return state;
+    }
+};
+
+const testToDo = () => {
+    const stateBefore = [
+        {
+            id: 1,
+            text: 't1',
+            completed: false
+        },
+        {
+            id: 2,
+            text: 't2',
+            completed: false
+        }
+    ];
+    const action = {
+        id: 2,
+        type: 'TOGGLE_TODO'
+    };
+    const stateAfter = [
+        {
+            id: 1,
+            text: 't1',
+            completed: false
+        },
+        {
+            id: 2,
+            text: 't2',
+            completed: true
+        }
+    ];
+
+    deepFreeze(stateBefore);
+    expect(todos(stateBefore, action)).toEqual(stateAfter);
+};
+
+testToDo();
+console.log('All test passed');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // class Square extends React.Component {
 //     render() {
@@ -33,7 +164,7 @@ function calculateWinner(square) {
     ];
     for (let i = 0; i < line.length; i++) {
         const [a, b, c] = line[i];
-        if (square[a] && square[a] == square[b] && square[a] == square[c]) {
+        if (square[a] && square[a] === square[b] && square[a] === square[c]) {
             return square[a];
         }
     }
@@ -81,7 +212,7 @@ class Game extends React.Component {
     }
     handleClick(i) {
         console.log(i);
-        const history = this.state.history.slice(0, this.state.stepNumber+1);
+        const history = this.state.history.slice(0, this.state.stepNumber + 1);
         const current = history[history.length - 1];
         const squares = current.squares.slice(0);
         if (calculateWinner(squares) || squares[i]) {
@@ -126,17 +257,17 @@ class Game extends React.Component {
                 </div>
                 <div className="game-info">
                     <div>{status}</div>
-                    <div>{movie}</div>
+                    <ol>{movie}</ol>
                 </div>
             </div>
         )
     }
 }
 
-ReactDom.render(
-    <Game />,
-    document.getElementById('root')
-);
+// ReactDom.render(
+//     <Game />,
+//     document.getElementById('root')
+// );
 
 
 
