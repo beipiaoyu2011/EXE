@@ -51,10 +51,11 @@ function getMovies() {
         });
         db(item);
         fs.writeFile(path.join(__dirname, './doc', 'dy.txt'), '', function () { });
+        return;
         item.forEach(n => {
             n.data.forEach((m, i) => {
                 superagent.get(m.href).charset().end((err, cres) => {
-                    var _$ = cherrio.load(cres.text);
+                    var _$ = cherrio.load(cres && cres.text);
                     var download_url = _$('#Zoom table a').text();
                     var title = _$('.bd3r .title_all').text();
                     title = title.substring(title.indexOf('《') + 1, title.indexOf('》'));
