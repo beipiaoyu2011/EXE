@@ -1,0 +1,17 @@
+{
+  "name": "vue-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node public/app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.16.3",
+    "fs": "0.0.1-security",
+    "vue": "^2.5.16",
+    "vue-server-renderer": "^2.5.16"
+  }
+}
