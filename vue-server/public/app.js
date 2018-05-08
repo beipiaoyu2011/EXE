@@ -17,13 +17,7 @@ server.get('*', (req, res) => {
     renderer.renderToString(app, (err, html) => {
         if (err) throw err
         console.log(html)
-        res.send(`
-            <!DOCTYPE html>
-            <html lang="en">
-                <head><title>Hello</title></head>
-                <body>${html}</body>
-            </html>
-        `)
+        res.send(html)
     })
 });
 server.listen(9000);
