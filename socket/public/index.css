@@ -90,6 +90,14 @@
   color: white;
 }
 .chatText {
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0 3px;
+  color: white;
+  border-radius: 3px;
+  text-align: left;
   display: inline-block;
   vertical-align: middle;
 }
