@@ -9,16 +9,15 @@
 </head>
 
 <body>
-    888
     <script>
         var xhr = new XMLHttpRequest();
-        // xhr.withCredentials = true;
-        xhr.open('GET', "https://postman-echo.com/get", true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.send('user=admin');
+        xhr.open('GET', "http://localhost:8080/?q=4", true);
+        // xhr.open('GET', "https://postman-echo.com/get", true);
+        xhr.send();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
-                alert(xhr.responseText);
+                console.log(xhr.responseText);
+                document.write(xhr.responseText)
             }
         };
     </script>

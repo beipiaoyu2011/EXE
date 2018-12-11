@@ -1,0 +1,16 @@
+{
+  "name": "public",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "api": "node js/http.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "http": "0.0.0",
+    "querystring": "^0.2.0"
+  }
+}
