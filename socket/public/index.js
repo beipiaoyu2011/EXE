@@ -7,20 +7,26 @@ var typeInput = document.getElementById('typeInput');
 var chatPage = document.querySelector('.chatPage');
 var loginPage = document.querySelector('.loginPage');
 var usernameInput = document.getElementsByClassName('usernameInput')[0];
+var chatHeader = document.querySelector('.charHeader');
+var chartTitle = 'ChatRoom 1.0';
 
 //Prompt for setting a username
 var connected = false;
 var username;
 var typing = false;
-var lastTypingTime;
-
+var lastSendTime;//last time of sending the message
+var lastTypingTime;//last time of typing the message
+var TYPING_TIMER_LENGTH = 500;
+var COLORS = [
+    '#e21400', '#91580f', '#f8a700', '#f78b00',
+    '#58dc00', '#287b00', '#a8f07a', '#4ae8c4',
+    '#3b88eb', '#3824aa', '#a700ff', '#d300e7'
+];
 
 //获取当前time
 const getNowTime = () => {
-    const date = new Date().toLocaleString();
-    return date.substr(13, 5);
+    return new Date().format('hh:mm');
 };
-
 
 //log
 const log = (msg, obj) => {
@@ -74,6 +80,18 @@ const sendMessage = (message, isSelf) => {
     }
 }
 
+//get the color of the user
+const getUsernameColor = username => {
+    //compute hash code
+    let hash = 7;
+    for (let i = 0; i < username.length; i++) {
+        hash = username.charCodeAt(i) + (hash << 5) - hash;
+    }
+    //Calculate the color
+    const index = Math.abs(hash % COLORS.length);
+    return COLORS[index];
+};
+
 //set the client's username
 const setUsername = () => {
     username = usernameInput.value.trim();
@@ -90,9 +108,10 @@ const setUsername = () => {
 const addChatMessage = data => {
     console.log('addChat', data);
     if (data.username && data.message) {
+        const bg = 'style="background: ' + getUsernameColor(data.username) + '"' || '';
         //show time of send message
-        if (data.time && lastTypingTime != data.time) {
-            lastTypingTime = data.time;
+        if (data.time && lastSendTime != data.time) {
+            lastSendTime = data.time;
             log(
                 '<span class="chatTime">' + data.time + '</span>',
                 {
@@ -104,14 +123,14 @@ const addChatMessage = data => {
             log(
                 '<span class="chatText">' + data.message + '</span>'
                 + '  ' +
-                '<span class="chatUsername">' + data.username + '</span>',
+                '<span class="chatUsername"  ' + bg + '>' + data.username + '</span>',
                 {
                     align: 'right'
                 }
             );
         } else {
             log(
-                '<span class="chatUsername">' + data.username + '</span>'
+                '<span class="chatUsername" ' + bg + '}>' + data.username + '</span>'
                 + '  ' +
                 '<span class="chatText">' + data.message + '</span>',
                 {
@@ -136,6 +155,7 @@ window.onkeydown = e => {
             loginPage.style.display = 'none';
             chatPage.style.display = 'block';
             sendMessage(typeInput.value.trim(), 'mySelf');
+            socket.emit('stop typing');
             typing = false;
         } else {
             setUsername();
@@ -149,6 +169,31 @@ submitBtn.addEventListener('click', e => {
     e.preventDefault();
     sendMessage(typeInput.value.trim(), 'mySelf');
 }, false);
+
+//listen the typing of the input
+typeInput.oninput = () => {
+    updateTypingMessage();
+};
+
+//someone's typing tip
+const updateTypingMessage = () => {
+    if (connected) {
+        if (!typing) {
+            typing = true;
+            socket.emit('typing');
+        }
+        lastTypingTime = new Date().getTime();
+
+        setTimeout(() => {
+            var now_time = new Date().getTime();
+            var time_diff = now_time - lastTypingTime;
+            if (time_diff > TYPING_TIMER_LENGTH && typing) {
+                socket.emit('stop typing');
+                typing = false;
+            }
+        }, TYPING_TIMER_LENGTH);
+    }
+}
 
 //store the user data to localStorage
 const recordUserData = data => {
@@ -212,7 +257,32 @@ socket.on('user left', data => {
     addParticipantsMessage(data);
 });
 
+//the server emits "typing"
+socket.on('typing', data => {
+    const name = data.username;
+    if (name) chatHeader.textContent = name + ' is typing...';
+});
+
+socket.on('stop typing', () => {
+    chatHeader.textContent = chartTitle;
+});
+
 
 socket.on('reconnect', () => {
-    console.log('you have been reconnected');
+    log('you have been reconnected', { log: true });
+    if (username) {
+        socket.emit('add user', username);
+    }
 });
+
+socket.on('disconnect', () => {
+    log('you have been disconnected', { log: true });
+});
+
+socket.on('reconnect_error', () => {
+    log('attempt to reconnect has failed', { log: true });
+});
+
+
+
+
