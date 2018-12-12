@@ -1,7 +1,5 @@
 var socket = io();
 
-
-
 //Initialize variables
 var submitBtn = document.getElementById('submitBtn');
 var typeInput = document.getElementById('typeInput');
@@ -17,15 +15,12 @@ var typing = false;
 var lastTypingTime;
 
 
-//click the submit
-submitBtn.addEventListener('click', e => {
-    e.preventDefault();
-    addChatMessage({
-        username: username,
-        message: typeInput.value.trim(),
-        align: 'right'
-    });
-}, false);
+//获取当前time
+const getNowTime = () => {
+    const date = new Date().toLocaleString();
+    return date.substr(13, 5);
+};
+
 
 //log
 const log = (msg, obj) => {
@@ -35,6 +30,8 @@ const log = (msg, obj) => {
     li.innerHTML = msg;
     if (obj.log) {
         li.classList.add('log');
+    } else if (obj.time) {
+        li.classList.add('textCenter');
     } else {
         li.classList.add('chat');
         if (obj.align == 'right') {
@@ -62,14 +59,18 @@ const sendMessage = (message, isSelf) => {
     console.log('msg', message, connected);
     if (connected && message) {
         typeInput.value = '';
-        //log into current client chat body
+        //log into current client chat 
         addChatMessage({
             username: username,
             message: message,
-            align: isSelf ? 'right' : ''
+            align: isSelf ? 'right' : '',
+            time: getNowTime()
         });
         //log into other client char body
-        socket.emit('new message', message)
+        socket.emit('new message', {
+            message: message,
+            time: getNowTime()
+        });
     }
 }
 
@@ -89,6 +90,16 @@ const setUsername = () => {
 const addChatMessage = data => {
     console.log('addChat', data);
     if (data.username && data.message) {
+        //show time of send message
+        if (data.time && lastTypingTime != data.time) {
+            lastTypingTime = data.time;
+            log(
+                '<span class="chatTime">' + data.time + '</span>',
+                {
+                    time: true,
+                }
+            );
+        }
         if (data.align == 'right') {
             log(
                 '<span class="chatText">' + data.message + '</span>'
@@ -133,8 +144,13 @@ window.onkeydown = e => {
 
 };
 
-//store the user data to localStorage
+//click the submit
+submitBtn.addEventListener('click', e => {
+    e.preventDefault();
+    sendMessage(typeInput.value.trim(), 'mySelf');
+}, false);
 
+//store the user data to localStorage
 const recordUserData = data => {
     let userData = JSON.parse(localStorage.getItem('chatUser')) || [];
     console.log(userData, data.username);
@@ -157,7 +173,7 @@ const recordUserData = data => {
 //whether the server emits "login", log it in chart body
 socket.on('login', data => {
     connected = true;
-    var message = 'welcome to socket.io chart room ';
+    var message = 'welcome to socket.io chat room ';
     log(message, {
         log: true,// prompt
     });

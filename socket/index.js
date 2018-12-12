@@ -16,11 +16,12 @@ io.on('connection', socket => {
     console.log('a user connected', socket.id);
 
     //when the client emits 'new message', the listens and executes
-    socket.on('new message', msg => {
+    socket.on('new message', data => {
         console.log('new message');        
         socket.broadcast.emit('new message', {
             username: socket.username,
-            message: msg
+            message: data.message,
+            time: data.time
         });
     });
 
