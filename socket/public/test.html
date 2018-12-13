@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script src="http://127.0.0.1:5500/crossStore/crossStore.js"></script>
+</head>
+
+<body>
+    TEST
+    <script>
+
+        crossStorage.setProxyUrl('http://127.0.0.1:5500/crossStore');
+
+        crossStorage.getItem('theme', (e) => {
+            console.log('theme', e);
+        });
+
+        crossStorage.change(function (e) {
+            console.log(e.oldValue, e.newValue);
+        });
+
+    </script>
+</body>
+
+</html>

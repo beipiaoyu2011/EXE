@@ -30,6 +30,13 @@
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="./index.js"></script>
+
+    <script>
+        window.addEventListener('message', e => {
+            // alert('data from 1 --->', e);
+            window.parent.postMessage('666', 'http://127.0.0.1:5500')
+        }, false)
+    </script>
 </body>
 
 </html>
