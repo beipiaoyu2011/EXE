@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>test</title>
-    <script src="https://huainanhai.github.io/crossStore/crossStore.js"></script>
+    <script src="http://127.0.0.1:5500/crossStore/crossStore.js"></script>
 </head>
 
 <body>
     TEST
     <script>
 
-        crossStorage.setProxyUrl('https://huainanhai.github.io/crossStore');
+        crossStorage.setProxyUrl('http://127.0.0.1:5500/crossStore');
 
         crossStorage.getItem('theme', (e) => {
             console.log('theme', e);
